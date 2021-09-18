@@ -1,6 +1,16 @@
 const API_KEY = `46ad7457603b9b0104e633e78cd60e16`;
 
-const starSearching = instruction => {
+const searchBtn = document.getElementById('search-btn');
+const inputF = document.getElementById('city-name');
+
+inputF.addEventListener("keypress", function(event) {
+    if (event.keyCode == 13) {
+        event.preventDefault();
+        searchBtn.click();
+    }
+});
+
+const startSearching = instruction => {
     if(instruction == 'dhaka') {
         fetchUrl(instruction);
     }
@@ -45,7 +55,7 @@ const fetchUrl = city => {
     };
 };
 
-starSearching('dhaka');
+startSearching('dhaka');
 
 const cheakTemperatureData = data => {
     if (data.cod == 200) {
